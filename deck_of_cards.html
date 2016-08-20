@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Deck of Cards</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+
+	<script type="text/javascript">
+		function Deck_of_cards(){
+			const ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+			const suits = ['&hearts;', '&clubs;', '&spades;', '&diams'];
+			this.cards = [];
+			for (var i = 0; i<ranks.length; i++){
+				for (var j = 0; j<suits.length; j++){
+					this.cards.push(new Card(ranks[i], suits[j]));
+				}
+			}
+		}
+		function Card(rank, suit){
+			this.rank = rank;
+			this.suit = suit;
+		}
+		Deck_of_cards.prototype.shuffle = function(){
+			var curr = this.cards.length - 1;
+			var temp; 
+			var swap_ndx;
+			while (curr>0){
+				swap_ndx = Math.floor(Math.random()*curr);
+				temp = this.cards[swap_ndx];
+				this.cards[swap_ndx] = this.cards[curr];
+				this.cards[curr] = temp;
+				curr--;
+			}
+		}
+		Deck_of_cards.prototype.deal = function(){
+			return this.cards.pop();
+		}
+		function Player(name){
+			this.name = name;
+			this.hand = [];
+		}
+		Player.prototype.draw_card = function(deck){
+			this.hand.push(deck.deal());
+		}
+		Player.prototype.discard = function(){
+			return this.hand.pop();
+		}
+
+
+		var shoe = new Deck_of_cards();
+		shoe.shuffle();
+		burial = shoe.deal();
+		console.log("Bury the " + burial.rank + " of " + burial.suit);
+		console.log(shoe.cards.length);
+		var p1 = new Player("Jack");
+		p1.draw_card(shoe);
+		p1.draw_card(shoe);
+		console.log(p1.name + " has a " + p1.hand[0].rank + " of " + p1.hand[0].suit + " and a " + p1.hand[1].rank + " of " + p1.hand[1].suit )
+
+	</script>
+</head>
+<body>
+	<div id="playfield" class='container'>
+		<div id="header">
+			<ul>
+				<li><button class="btn btn-default">Reset</button></li>
+				<li>Score: {{ stats.score }}</li>
+			</ul>
+		</div>  <!-- #header -->
+		<div id="hands">
+			<p>Dealer's Hand</p>
+			<div id="deal_hand">
+				<div class="card_box">
+					<p>10</p>
+					<p>&spades;</p>
+				</div>
+				<div class="card_box">
+					<p>3</p>
+					<p>&hearts;</p>					
+				</div>
+			</div>  <!-- #deal_hand -->
+			<p>Your Hand</p>
+			<div id="your_hand">
+				<div class="card_box">
+					<p>K</p>
+					<p>&diams;</p>
+				</div>
+				<div class="card_box">
+					<p>7</p>
+					<p>&clubs;</p>
+				</div>
+			</div>  <!-- #your_hand -->
+		</div>  <!-- #hands -->
+		<div class="tab">
+			<table class='table table-striped' id="status">
+				<thead>
+					<tr>
+						<th>Totals</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Dealer</td>
+						<td>{{Dealer Total}}</td>
+					</tr>
+					<tr>
+						<td>You</td>
+						<td>{{Your Total}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="tab">
+			<table class='table table-striped'>
+				<thead>
+					<tr>
+						<th>Next Card</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Chance of 10</td>
+						<td>{{ 30% }}</td>
+					</tr>
+					<tr>
+						<td>Chance of Bust</td>
+						<td>{{ 0% }}</td>
+					</tr>
+				</tbody>
+			</table>  <!-- #status -->
+		</div>
+		<div class="tab">
+			<table id="deck_info" class="table table-striped">
+				<thead>
+					<tr>
+						<td>Deck Info</td>
+						<td>All</td>
+						<td>A</td>
+						<td>K-Q-J-10</td>
+						<td>9</td>
+						<td>8</td>
+						<td>7</td>
+						<td>6</td>
+						<td>5</td>
+						<td>4</td>
+						<td>3</td>
+						<td>2</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Deck Info</td>
+						<td>All</td>
+						<td>A</td>
+						<td>K-Q-J-10</td>
+						<td>9</td>
+						<td>8</td>
+						<td>7</td>
+						<td>6</td>
+						<td>5</td>
+						<td>4</td>
+						<td>3</td>
+						<td>2</td>
+					</tr>
+					<tr>
+						<td>Deck Info</td>
+						<td>All</td>
+						<td>A</td>
+						<td>K-Q-J-10</td>
+						<td>9</td>
+						<td>8</td>
+						<td>7</td>
+						<td>6</td>
+						<td>5</td>
+						<td>4</td>
+						<td>3</td>
+						<td>2</td>
+					</tr>
+				</tbody>
+			</table>  <!-- #deck_info -->
+		</div> <!-- .tab -->
+	</div>  <!-- #playfield -->
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: verdana, sans-serif;
+}
+
+ul {
+
+}
+
+table, td {
+	display: inline-block;
+}
+
+.tab {
+	background: white;
+	display: inline-block;
+	vertical-align: top;
+}
+
+#playfield {
+	margin: 20px auto;
+	width: 970px;
+	height: 600px;
+	background: green;
+}
+
+#hands {
+	display: inline-block;
+	vertical-align: top;
+	width: 500px;
+}
+
+#header {
+	background: white;
+
+}
+
+.card_box {
+	background: white;
+	width: 30px;
+	border: 1px solid black;
+	border-radius: 3px;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.card_box p {
+	text-align: center;
+}
+
+#deal_hand {
+	border: 1px solid black;
+	border-radius: 5px;
+}
+
+#your_hand {
+	border: 1px solid black;
+	border-radius: 3px;
+}
+
+#bttn_row {
+
+}
+
+#deck_info {
+
+}
+
+#status {
+
+}
