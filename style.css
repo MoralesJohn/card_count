@@ -47,16 +47,19 @@ table, td {
 
 .card_box p {
 	text-align: center;
+	margin-right: 5px; 
 }
 
 #deal_hand {
 	border: 1px solid black;
 	border-radius: 5px;
+	padding: 5px;
 }
 
 #your_hand {
 	border: 1px solid black;
 	border-radius: 3px;
+	padding: 5px;
 }
 
 #bttn_row {

@@ -75,22 +75,18 @@
 		</div>  <!-- #header -->
 		<div id="hands">
 			<p>Dealer's Hand</p>
-			<div id="deal_hand" ng-repeat='card in dealer.hand'>
-					<div class="card_box">
+			<div id="deal_hand">
+					<div class="card_box" ng-repeat='card in dealer.hand'>
 						<p>{{ card.rank }}</p>
 						<p>{{ card.suit }}</p>
 					</div>
 			</div>  <!-- #deal_hand -->
 			<p>Your Hand</p>
 			<div id="your_hand">
-				<div class="card_box">
-					<p>K</p>
-					<p>&diams;</p>
-				</div>
-				<div class="card_box">
-					<p>7</p>
-					<p>&clubs;</p>
-				</div>
+				<div class="card_box" ng-repeat='card in player.hand'>
+						<p>{{ card.rank }}</p>
+						<p>{{ card.suit }}</p>
+					</div>
 			</div>  <!-- #your_hand -->
 		</div>  <!-- #hands -->
 		<div class="tab">
@@ -132,7 +128,7 @@
 			</table>  <!-- #status -->
 		</div>
 		<div class="tab">
-			<table id="deck_info" class="table table-striped">
+			<table id="deck_info" class="table table-bordered">
 				<thead>
 					<tr>
 						<td>Deck Info</td>
